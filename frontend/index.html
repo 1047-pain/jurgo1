@@ -3,59 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML5 Game</title>
+    <title>Game</title>
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
         canvas {
             border: 1px solid black;
         }
-        #controls {
+        .controls {
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>HTML5 Game Structure</h1>
-    <div id="game-area">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="info">
-            <p>Diamonds: <span id="diamondCount">0</span></p>
-            <p>Spheres: <span id="sphereCount">0</span></p>
-            <p>Territory: <span id="territoryDisplay">None</span></p>
-        </div>
-        <div id="controls">
-            <button id="startButton">Start Game</button>
-            <button id="stopButton">Stop Game</button>
-            <button id="resetButton">Reset Game</button>
-        </div>
+    <h1>Game</h1>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div class="controls">
+        <button id="buildSphereBtn">Build Sphere</button>
+        <button id="expandTerritoryBtn">Expand Territory</button>
+        <button id="resetGameBtn">Reset Game</button>
     </div>
-
+    <div id="resources">
+        <h2>Resources</h2>
+        <p id="resourceDisplay">Spheres: 0</p>
+    </div>
     <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        let diamondCount = 0;
-        let sphereCount = 0;
-        let territory = 'None';
+        // Game script here
+        let spheres = 0;
+        const resourceDisplay = document.getElementById('resourceDisplay');
 
-        function updateDisplay() {
-            document.getElementById('diamondCount').textContent = diamondCount;
-            document.getElementById('sphereCount').textContent = sphereCount;
-            document.getElementById('territoryDisplay').textContent = territory;
-        }
+        document.getElementById('buildSphereBtn').onclick = function() {
+            spheres++;
+            resourceDisplay.innerText = `Spheres: ${spheres}`;
+        };
 
-        document.getElementById('startButton').addEventListener('click', () => {
-            // Start game logic
-        });
+        document.getElementById('expandTerritoryBtn').onclick = function() {
+            // Logic to expand territory
+            alert('Territory expanded!');
+        };
 
-        document.getElementById('stopButton').addEventListener('click', () => {
-            // Stop game logic
-        });
-
-        document.getElementById('resetButton').addEventListener('click', () => {
-            diamondCount = 0;
-            sphereCount = 0;
-            territory = 'None';
-            updateDisplay();
-        });
+        document.getElementById('resetGameBtn').onclick = function() {
+            spheres = 0;
+            resourceDisplay.innerText = `Spheres: ${spheres}`;
+            // Logic to reset game
+            alert('Game reset!');
+        };
     </script>
 </body>
 </html>
