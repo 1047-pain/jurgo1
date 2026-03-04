@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Game</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+        #controls {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML5 Game Structure</h1>
+    <div id="game-area">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="info">
+            <p>Diamonds: <span id="diamondCount">0</span></p>
+            <p>Spheres: <span id="sphereCount">0</span></p>
+            <p>Territory: <span id="territoryDisplay">None</span></p>
+        </div>
+        <div id="controls">
+            <button id="startButton">Start Game</button>
+            <button id="stopButton">Stop Game</button>
+            <button id="resetButton">Reset Game</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let diamondCount = 0;
+        let sphereCount = 0;
+        let territory = 'None';
+
+        function updateDisplay() {
+            document.getElementById('diamondCount').textContent = diamondCount;
+            document.getElementById('sphereCount').textContent = sphereCount;
+            document.getElementById('territoryDisplay').textContent = territory;
+        }
+
+        document.getElementById('startButton').addEventListener('click', () => {
+            // Start game logic
+        });
+
+        document.getElementById('stopButton').addEventListener('click', () => {
+            // Stop game logic
+        });
+
+        document.getElementById('resetButton').addEventListener('click', () => {
+            diamondCount = 0;
+            sphereCount = 0;
+            territory = 'None';
+            updateDisplay();
+        });
+    </script>
+</body>
+</html>
